@@ -1,14 +1,32 @@
 # ☕ Projeto Capputeeno ☕
 
-> Commit: 15/08/2024 - 20:48 ( Commit para iniciar o projeto )
+> Commit: 16/08/2024 - 17:37 ( Commit da criação do Header )
 
-## 💭 Objetivo:
-!["Imagem do objetivo do projeto, imagem construida pela equipe da rockeatseat e retirada do figma"](./src/assets/figmaCapputeeno.png)
+## 💭 Header de objetivo:
+![Imagem do objetivo no figma](./src/assets/headerInFigma.png)
 
-## 📌 Sobre o projeto:
+## 💭 Meu Header
+![Imagem do meu header](./src/assets/headerInMySite.png)
 
-### Este projeto é um desafio proposto neste repositório:
-> <a href="https://github.com/Rocketseat/frontend-challenge" target="_blank">https://github.com/Rocketseat/frontend-challenge</a>
+## ✔️ Alterações deste commit:
+
+### Alterações nas pastas: ( src )
+### Alterações nas pastas de ( src ): (app / assets / components / styles)
+
+## app:
+- app > layout.tsx: 
+    - Importação das fontes: (Saira / Saira_Stencil_One)
+    - Adicionado o Header como componente fixo de todas as páginas
+    - Adicionado os estilos globais
+
+## assets:
+- assets: Adicionado as duas fotos dos headers para mostrar neste readme e adicionado o png da sacolinha que fica ao lado do input
+
+## components:
+- components > header: Criado o componente header e toda sua estilização e responsividade
+
+## styles: 
+- styles > GlobalStyles.css: Apenas adicionado o background-color e o box-shadow do corpo do site
 
 ##
 

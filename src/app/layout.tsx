@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Saira, Saira_Stencil_One } from "next/font/google";
+import Header from '../components/Header';
+import '../styles/GlobalStyles.css'
 
-const inter = Inter({ subsets: ["latin"] });
+const saira = Saira({ subsets: ["latin"], weight: ['400']});
+export const SairaStencilOne = Saira_Stencil_One({ subsets: ["latin"], weight: ['400']})
 
 export const metadata: Metadata = {
   title: {
@@ -14,7 +17,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
+      <body className={saira.className}>
+        <Header/>
+        {children}
+      </body>
     </html>
   );
 }

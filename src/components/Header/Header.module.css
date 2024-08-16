@@ -1,0 +1,109 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    Height: 80px;
+    width: 100vw;
+    padding: 0px 160px;
+    background: rgba(255, 255, 255, 1);
+}
+
+.header > h1 {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 60px;
+    color: rgba(93, 93, 109, 1);
+}
+
+.header > div.headerRightSide {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header > div.headerRightSide > div.inputSection {
+    display: flex;
+    align-items: center;
+    width: 352px;
+    height: 42px;
+    padding: 9px 16px;
+    border-radius: 8px;
+    background: rgba(243, 245, 246, 1);
+}
+
+.header > div.headerRightSide > div.inputSection > input {
+    background-color: transparent;
+    height: 100%;
+    width: 90%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.header > div.headerRightSide > div.inputSection > svg {
+    cursor: pointer;
+}
+
+.header > div.headerRightSide > div.shoppingBag {
+    cursor: pointer;
+}
+
+.header > div.headerRightSide > div.shoppingBag > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    Width: 17px;
+    Height: 17px;
+    Top: 39px;
+    margin-left: 15px;
+    border-radius: 100%;
+    background-color: #DE3838;
+    color: white;
+    font-size: 13px;
+    font-family: system-ui;
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .header {
+        padding: 0px 30px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .header {
+        padding: 0px 10px;
+    }
+
+    .header > h1 {
+        font-size: 6vw;
+    }
+    
+    .header > div.headerRightSide {
+        gap: 20px;
+    }
+
+    .header > div.headerRightSide > div.inputSection {
+        width: 50vw;
+    }
+}
+    
+
+@media (max-width: 480px) {
+    .header {
+        padding: 0px 10px;
+    }
+    
+    .header > h1 {
+        font-size: 6vw;
+    }
+    
+    .header > div.headerRightSide {
+        gap: 20px;
+    }
+
+    .header > div.headerRightSide > div.inputSection {
+        width: 40vw;
+    }
+}
