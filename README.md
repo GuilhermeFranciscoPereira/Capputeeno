@@ -1,32 +1,32 @@
 # ☕ Projeto Capputeeno ☕
 
-> Commit: 16/08/2024 - 17:37 ( Commit da criação do Header )
+> Commit: 17/08/2024 - 15:58 ( Commit da criação do Nav )
 
-## 💭 Header de objetivo:
-![Imagem do objetivo no figma](./src/assets/headerInFigma.png)
+## ⚠️ IMPORTANTE!
+### O desafio pede que a estilização seja feita com styled-components. Embora eu goste bastante de estilizar com styled-components, usando react. Quando uso Next.js, prefiro estilizar com CSS Modules para garantir que a renderização no lado do servidor seja precisa.
 
-## 💭 Meu Header
-![Imagem do meu header](./src/assets/headerInMySite.png)
+# 
+
+## 💭 Nav de objetivo:
+![Imagem do objetivo no figma](./src/assets/navInFigma.png)
+
+## 💭 Meu Nav
+![Imagem do meu site](./src/assets/navInMySite.png)
 
 ## ✔️ Alterações deste commit:
 
 ### Alterações nas pastas: ( src )
-### Alterações nas pastas de ( src ): (app / assets / components / styles)
+### Alterações nas pastas de ( src ): (app / assets / components)
 
 ## app:
-- app > layout.tsx: 
-    - Importação das fontes: (Saira / Saira_Stencil_One)
-    - Adicionado o Header como componente fixo de todas as páginas
-    - Adicionado os estilos globais
+- app > (pages) > (navLinks) > [[id] / Mugs / TShirts]: Todas essas pastas foram criadas, porém, sem conteúdo por enquanto.
+- app > [id] > page.tsx: Também criado mas sem conteúdo por hora.
 
 ## assets:
-- assets: Adicionado as duas fotos dos headers para mostrar neste readme e adicionado o png da sacolinha que fica ao lado do input
+- assets: Adicionado as duas fotos do nav para mostrar neste readme.
 
 ## components:
-- components > header: Criado o componente header e toda sua estilização e responsividade
-
-## styles: 
-- styles > GlobalStyles.css: Apenas adicionado o background-color e o box-shadow do corpo do site
+- components > nav: Criado o componente nav e toda sua estilização e responsividade
 
 ##
 
