@@ -52,7 +52,7 @@ section.togglePagination > a {
     cursor: pointer;
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1155px) {
     section.navSection, section.togglePagination {
         padding: 0px 30px;
     }
