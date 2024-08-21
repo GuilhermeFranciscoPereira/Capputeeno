@@ -3,12 +3,14 @@ import Nav from "@/components/Nav";
 import useGetDatas from "@/hooks/useGetDatas";
 import Image from "next/image";
 import "../styles/GlobalStyles.css";
+import TogglePagination from "@/components/TogglePagination";
 
 export default function Home(): JSX.Element {
   const {data, isFetching} = useGetDatas();
   return (
     <>
     <Nav/>
+    <TogglePagination/>
     <main className='mainCards'>
       {isFetching ? <h1 className='h1Fetching'>Carregando...</h1> :
         data?.data.allProducts.map(product => (
@@ -21,6 +23,9 @@ export default function Home(): JSX.Element {
         ))
       }
     </main>
+    <div className='lastPartFromHome'>
+      <TogglePagination/>      
+    </div>
     </>
   )
 }

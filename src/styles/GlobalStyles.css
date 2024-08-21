@@ -68,6 +68,10 @@ html, body {
     color: rgba(9, 9, 10, 1);
 }
 
+.lastPartFromHome {
+    margin-bottom: 100px;
+}
+
 @media (min-width: 769px) and (max-width: 1155px) {
     .mainCards {
         padding: 0px 30px;

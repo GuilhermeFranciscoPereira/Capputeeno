@@ -29,37 +29,14 @@ section.navSection > div.divOrganizeBy > select {
     line-height: 22px;
 }
 
-section.togglePagination {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: 28px;
-    padding: 0px 160px;
-    gap: 2px;
-}
-
-section.togglePagination > a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
-    line-height: 24px;
-    text-decoration: none;
-    border-radius: 8px;
-    background: rgba(233, 233, 240, 1);
-    cursor: pointer;
-}
-
 @media (min-width: 769px) and (max-width: 1155px) {
-    section.navSection, section.togglePagination {
+    section.navSection {
         padding: 0px 30px;
     }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-    section.navSection, section.togglePagination {
+    section.navSection {
         padding: 0px 10px;
     }
 
@@ -73,12 +50,6 @@ section.togglePagination > a {
         padding: 0px 0px;
         flex-direction: column;
         gap: 20px;
-    }
-
-    section.togglePagination {
-        padding: 0px 0px;
-        justify-content: center;
-        gap: 5px;
     }
 
     section.navSection > div.divLink {
