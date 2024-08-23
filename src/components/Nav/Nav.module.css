@@ -12,11 +12,22 @@ section.navSection > div.divLink {
     gap: 10px;
 }
 
-section.navSection > div.divLink > a {
-    text-decoration: none;
+section.navSection > div.divLink > button {
+    font-family: inherit;
+    background-color: transparent;
+    border: none;
+    text-align: center;
     font-size: 16px;
     line-height: 22px;
-    text-align: center;
+    font-weight: 400;
+    color: rgba(115, 115, 128, 1);
+    cursor: pointer;
+}
+
+section.navSection > div.divLink > .active {
+    font-weight: 600;
+    color: rgba(65, 65, 77, 1);
+    border-bottom: 4px solid rgba(255, 165, 133, 1);
 }
 
 section.navSection > div.divOrganizeBy > select {
@@ -40,7 +51,7 @@ section.navSection > div.divOrganizeBy > select {
         padding: 0px 10px;
     }
 
-    section.navSection > div.divLink > a {
+    section.navSection > div.divLink > button {
         font-size: 14px;
     }
 }
@@ -60,7 +71,7 @@ section.navSection > div.divOrganizeBy > select {
         width: 100vw;
     }
 
-    section.navSection > div.divLink > a {
+    section.navSection > div.divLink > button {
         font-size: 14px;
     }
 }

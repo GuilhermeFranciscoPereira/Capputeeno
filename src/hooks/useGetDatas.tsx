@@ -1,5 +1,7 @@
 'use client'
+import { CategoryContext } from "@/contexts/Filters/CategoryContext"
 import axios from "axios"
+import { useContext } from "react"
 import { useQuery } from "react-query"
 
 type productsProps = {
@@ -19,24 +21,39 @@ type productsProps = {
 }
 
 export default function useGetDatas() {
-    const {data, isFetching} = useQuery<productsProps>('Products', async () => {
+    const {category} = useContext(CategoryContext);
+    const {data, isFetching} = useQuery<productsProps>(`Products - ${category}`, async () => {
         try {
             const response = await axios({
                 url: 'http://localhost:3333',
                 method: 'post',
                 data: {
-                    query: `
-                        query {
-                            allProducts {
-                                id
-                                name
-                                price_in_cents
-                                image_url
-                                category
-                                created_at
-                                sales
-                            }
+                    query: category.length < 1
+                    ? `
+                    query {
+                        allProducts {
+                            id
+                            name
+                            price_in_cents
+                            image_url
+                            category
+                            created_at
+                            sales
                         }
+                    }
+                    `
+                    : `
+                    query {
+                        allProducts(filter: {category: "${category}"}) {
+                            id
+                            name
+                            price_in_cents
+                            image_url
+                            category
+                            created_at
+                            sales
+                        }
+                    }
                     `
                 }
             })
