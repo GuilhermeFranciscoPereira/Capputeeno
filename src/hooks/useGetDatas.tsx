@@ -1,8 +1,8 @@
 'use client'
-import { CategoryContext } from "@/contexts/Filters/CategoryContext"
-import axios from "axios"
 import { useContext } from "react"
+import { CategoryContext } from "@/contexts/Filters/CategoryContext"
 import { useQuery } from "react-query"
+import axios from "axios"
 
 type productsProps = {
     data: {
@@ -20,7 +20,7 @@ type productsProps = {
     }
 }
 
-export default function useGetDatas() {
+export default function useGetDatas(): {data: productsProps | undefined; isFetching: boolean} {
     const {category} = useContext(CategoryContext);
     const {data, isFetching} = useQuery<productsProps>(`Products - ${category}`, async () => {
         try {

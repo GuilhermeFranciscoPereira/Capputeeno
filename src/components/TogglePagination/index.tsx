@@ -19,7 +19,7 @@ const idNavLinks: idNavLinksProps = [
     {name: '>', href: '/5'}
 ]
 
-export default function TogglePagination() {
+export default function TogglePagination(): JSX.Element {
     const pathName: string = usePathname();
     
     return (

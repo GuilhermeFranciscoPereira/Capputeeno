@@ -4,9 +4,9 @@ import { useContext } from 'react'
 import { CategoryContext } from '@/contexts/Filters/CategoryContext';
 import styles from './Nav.module.css'
 
-export default function Nav() {
+export default function Nav(): JSX.Element {
     const {toSetCategory} = useContext(CategoryContext);
-
+    
     return (
         <>
         <nav>

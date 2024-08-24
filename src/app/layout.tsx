@@ -1,17 +1,16 @@
-'use client'
-
+'use client';
 import type { Metadata } from "next";
-import { Saira, Saira_Stencil_One } from "next/font/google";
-import Header from '../components/Header';
-import '../styles/GlobalStyles.css'
+import { Saira } from "next/font/google";
+import { NextFont } from "next/dist/compiled/@next/font";
 import { QueryClientProvider } from "react-query";
-import queryClient from "@/services/queryClient";
+import Header from '../components/Header';
 import AppProvider from "@/contexts/AppProvider";
+import queryClient from "@/services/queryClient";
+import '../styles/GlobalStyles.css';
 
-const saira = Saira({ subsets: ["latin"], weight: ['400']});
-export const SairaStencilOne = Saira_Stencil_One({ subsets: ["latin"], weight: ['400']});
+const saira: NextFont = Saira({ subsets: ["latin"], weight: ['400']});
 
-export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>) {
+export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>): JSX.Element {
   return (
     <>
     <AppProvider>
