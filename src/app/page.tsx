@@ -1,11 +1,14 @@
 'use client'
-import Nav from "@/components/Nav";
+import { useContext } from "react";
+import { SearchContext } from "@/contexts/Filters/SearchContext";
 import useGetDatas from "@/hooks/useGetDatas";
+import Nav from "@/components/Nav";
 import Image from "next/image";
-import "../styles/GlobalStyles.css";
 import TogglePagination from "@/components/TogglePagination";
+import "../styles/GlobalStyles.css";
 
 export default function Home(): JSX.Element {
+  const {search} = useContext(SearchContext);
   const {data, isFetching} = useGetDatas();
   return (
     <>
@@ -14,12 +17,23 @@ export default function Home(): JSX.Element {
     <main className='mainCards'>
       {isFetching ? <h1 className='h1Fetching'>Carregando...</h1> :
         data?.data.allProducts.map(product => (
+          search.length > 1
+          ? ( product.name.toLowerCase().trim().replace(/\s+/g, '').includes(search) &&
             <div key={product.id}>
                 <Image src={product.image_url} height={300} width={300} alt={`Imagem do produto: ${product.name}`} quality={100}/>
                 <p>{product.name}</p>
                 <hr />
                 <p>R$ {product.price_in_cents / 100}</p>
             </div>
+          )
+          : (
+            <div key={product.id}>
+                <Image src={product.image_url} height={300} width={300} alt={`Imagem do produto: ${product.name}`} quality={100}/>
+                <p>{product.name}</p>
+                <hr />
+                <p>R$ {product.price_in_cents / 100}</p>
+            </div>
+          )
         ))
       }
     </main>

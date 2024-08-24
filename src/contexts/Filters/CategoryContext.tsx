@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 type CategoryContextProps = {
     category: string;
@@ -9,6 +9,10 @@ const CategoryContext = createContext<CategoryContextProps>({} as CategoryContex
 
 const CategoryProvider = ({children}: {children: React.ReactNode}): JSX.Element => {
     const [category, setCategory] = useState<string>('');
+
+    useEffect(() => {
+        document.querySelector('#allProducts')?.classList.add('Nav_active__Z6ODH');
+    }, [])
 
     function toSetCategory(category: string, activeId: string): void {
         setCategory(category);

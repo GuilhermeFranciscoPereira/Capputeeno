@@ -1,8 +1,8 @@
 # ☕ Projeto Capputeeno ☕
 
-Commit: 23/08/2024 - 11:14 ( Commit de refatoração de como é feito o filtro entre: "Todos os produtos" - "Camisetas" - "Canecas")
+Commit: 24/08/2024 - 07:59 ( Commit de adição da opção filtro de pesquisas escritas no canto superior direito )
 ## Veja eu criando este commit no meu canal do youtube:
-> 🔗 <a href="https://youtu.be/zHwa4Re80HA?si=mz793js-Erjw36yI" target="_blank">Projeto Capputeeno - Parte 1 - Criação dos filtros de categoria</a>
+> 🔗 <a href="https://youtu.be/MNrKWIPPRC8" target="_blank">Projeto Capputeeno - Parte 4 - Filtro de pesquisa escrita</a>
 
 ## ⚠️ IMPORTANTE!
 ### O desafio pede que a estilização seja feita com styled-components. Embora eu prefira estilizar com styled-components, usando react. Quando uso Next.js, prefiro estilizar com CSS Modules para garantir que a renderização no lado do servidor seja precisa.
@@ -17,30 +17,18 @@ Commit: 23/08/2024 - 11:14 ( Commit de refatoração de como é feito o filtro e
 
 ### Alterações na pasta: ( src )
 
-### Alterações nas pastas de ( src ): ( app / assets / components / contexts / hooks )
+### Alterações nas pastas de ( src ): ( app / components / contexts )
 
 ## app:
-- app > layout.tsx: Adicionado o AppProvider para os contextos.
-- app > page.tsx: Alterado o tamanho das fotos nos cards para 300px.
-
-## assets:
-- assets: Adicionado a foto do site como está atualmente para mostrar neste readme.
+- app > page.tsx: Adicionado os filtros para as pesquisas, se o usuário digitar qualquer coisa no campo de pesquisa do canto superior direito ele vai fazer a validação e procurar os produtos que o nome seja compatível com a pesquisa, se não digitar nada ele irá renderizar todos os cards normalmente.
 
 ## components:
-- components > Nav: Alterado a forma de como é disponibilizado as opções de filtros de categorias, de Link para Buttons e também estilizado esses novos botões.
+- components > Header: Adicionado o onChange para que toda vez que o usuário digitar ele realizar uma nova renderização e assim fazer uma nova pesquisa. Além de importar o useContext e o SearchContext para pegar a função para setarmos o valor da pesquisa.
 
 ## contexts:
-- contexts: Criado o AppProvider.tsx para ir ao layout.tsx em app e criado também a pasta "Filters".
-- contexts > Filters: Criado o arquivo: CategoryContext.tsx que contem todo o nosso contexto de filtro para a filtragem de produtos.
-
-## hooks: 
-- hooks > useGetDatas.tsx: Adicionado a filtragem se é "Todos os produtos" ou "Camisetas" / "Canecas".
-
-## services:
-- services > queryClient.tsx: Criado o queryClient para ir ao provider que está em app > layout.tsx.
-
-## styles:
-- styles > GlobalStyles.css: Como os cards estão em três partes do código eu decidi deixar como estilização global com um className especifico.
+- contexts > AppProvider: Adicionado o provider de Search.
+- contexts > Filters: Criado o arquivo: SearchContext.tsx que contem todo o nosso contexto de filtro de pesquisas escritas.
+- contexts > Filters > CategoryContext.tsx: Apenas adicionado o useEffect para sempre que o site iniciar começar com padrão como "Todos os produtos"
 
 ##
 
