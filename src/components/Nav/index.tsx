@@ -1,12 +1,18 @@
 'use client'
-
 import { useContext } from 'react'
 import { CategoryContext } from '@/contexts/Filters/CategoryContext';
+import { OrganizeByContext } from '@/contexts/Filters/OrganizeByContext';
 import styles from './Nav.module.css'
 
 export default function Nav(): JSX.Element {
     const {toSetCategory} = useContext(CategoryContext);
+    const {toSetChoiceAndOrder} = useContext(OrganizeByContext);
     
+    function handleSetChoiceAndOrder(event: React.ChangeEvent<HTMLSelectElement>): void {
+        const splitWord: Array<string> = (event.target.value).split(' ');
+        toSetChoiceAndOrder(splitWord[0], splitWord[1]);
+    }
+
     return (
         <>
         <nav>
@@ -17,12 +23,12 @@ export default function Nav(): JSX.Element {
                     <button id='mugs' onClick={() => toSetCategory('mugs', 'mugs')}>CANECAS</button>
                 </div>
                 <div className={styles.divOrganizeBy}>
-                    <select name="organizeBy">
-                        <option value="">Organizar por</option>
-                        <option value="news">Novidades</option>
-                        <option value="higherPrice">Preço: Maior - menor</option>
-                        <option value="lowerPrice">Preço: Menor - maior</option>
-                        <option value="bestSellers">Mais Vendidos</option>
+                    <select name="organizeBy" onChange={handleSetChoiceAndOrder}>
+                        <option value=" ">Organizar por</option>
+                        <option value="created_at ASC">Novidades</option>
+                        <option value="price_in_cents DESC">Preço: Maior - menor</option>
+                        <option value="price_in_cents ASC">Preço: Menor - maior</option>
+                        <option value="sales DESC">Mais Vendidos</option>
                     </select>
                 </div>
             </section>

@@ -3,6 +3,7 @@ import { useContext } from "react"
 import { CategoryContext } from "@/contexts/Filters/CategoryContext"
 import { useQuery } from "react-query"
 import axios from "axios"
+import { OrganizeByContext } from "@/contexts/Filters/OrganizeByContext"
 
 type productsProps = {
     data: {
@@ -22,7 +23,8 @@ type productsProps = {
 
 export default function useGetDatas(): {data: productsProps | undefined; isFetching: boolean} {
     const {category} = useContext(CategoryContext);
-    const {data, isFetching} = useQuery<productsProps>(`Products - ${category}`, async () => {
+    const {choice, order} = useContext(OrganizeByContext);
+    const {data, isFetching} = useQuery<productsProps>(`Products - ${category} - Field: ${choice} - Order: ${order}`, async () => {
         try {
             const response = await axios({
                 url: 'http://localhost:3333',
@@ -31,7 +33,7 @@ export default function useGetDatas(): {data: productsProps | undefined; isFetch
                     query: category.length < 1
                     ? `
                     query {
-                        allProducts {
+                        allProducts(sortField: "${choice}", sortOrder: "${order}") {
                             id
                             name
                             price_in_cents
@@ -44,7 +46,7 @@ export default function useGetDatas(): {data: productsProps | undefined; isFetch
                     `
                     : `
                     query {
-                        allProducts(filter: {category: "${category}"}) {
+                        allProducts(filter: {category: "${category}"}, sortField: "${choice}", sortOrder: "${order}") {
                             id
                             name
                             price_in_cents

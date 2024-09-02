@@ -1,34 +1,35 @@
 # ☕ Projeto Capputeeno ☕
 
-Commit: 24/08/2024 - 07:59 ( Commit de adição da opção filtro de pesquisas escritas no canto superior direito )
+Commit: 29/08/2024 - 18:41 ( Commit de adição da opção filtro de "Organizar por" )
 ## Veja eu criando este commit no meu canal do youtube:
-> 🔗 <a href="https://youtu.be/MNrKWIPPRC8" target="_blank">Projeto Capputeeno - Parte 4 - Filtro de pesquisa escrita</a>
+> 🔗 <a href="https://youtube.com/@lottusdev?si=XXXaT6mtVrOct7Tr" target="_blank">Projeto Capputeeno - Parte 5 - Filtro de pesquisa de "organizar por"</a>
 
 ## ⚠️ IMPORTANTE!
 ### O desafio pede que a estilização seja feita com styled-components. Embora eu prefira estilizar com styled-components, usando react. Quando uso Next.js, prefiro estilizar com CSS Modules para garantir que a renderização no lado do servidor seja precisa.
 
 # 
 
-
-## 💭 Como o site está no momento atual:
-![Imagem do projeto atualmente](./src/assets/telaFinalizadaRefactor.png)
+## 💭 Como o site está no momento atual com os filtros:
+![Imagem do projeto atualmente](./src/assets/telaFinalizadaFiltros.png)
 
 ## ✔️ Alterações deste commit:
 
 ### Alterações na pasta: ( src )
 
-### Alterações nas pastas de ( src ): ( app / components / contexts )
+### Alterações nas pastas de ( src ): ( assets / components / contexts / hooks )
 
-## app:
-- app > page.tsx: Adicionado os filtros para as pesquisas, se o usuário digitar qualquer coisa no campo de pesquisa do canto superior direito ele vai fazer a validação e procurar os produtos que o nome seja compatível com a pesquisa, se não digitar nada ele irá renderizar todos os cards normalmente.
+## assets:
+- assets: Adicionado a imagem do site atualmente, com os filtros já aplicados.
 
 ## components:
-- components > Header: Adicionado o onChange para que toda vez que o usuário digitar ele realizar uma nova renderização e assim fazer uma nova pesquisa. Além de importar o useContext e o SearchContext para pegar a função para setarmos o valor da pesquisa.
+- components > Nav: Adicionado uma nova função para que toda vez que o select for alterado ele chame a função que seta o novo valor para fazer a requisição com o filtro desejado.
 
 ## contexts:
-- contexts > AppProvider: Adicionado o provider de Search.
-- contexts > Filters: Criado o arquivo: SearchContext.tsx que contem todo o nosso contexto de filtro de pesquisas escritas.
-- contexts > Filters > CategoryContext.tsx: Apenas adicionado o useEffect para sempre que o site iniciar começar com padrão como "Todos os produtos"
+- contexts > AppProvider: Adicionado o provider de OrganizeBy.
+- contexts > Filters > OrganizeByContext.tsx: Criado todo o contexto para setar e compartilhar o valor setado, a ordem e a função que seta um novo valor.
+
+## hooks:
+- hooks > useGetDatas.tsx: Apenas adicionado os parâmetros sortField e sortOrder em "allProducts" para fazer a requisição com o filtro que o usuário escolher.
 
 ##
 
