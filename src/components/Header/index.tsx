@@ -1,15 +1,15 @@
-import { useContext } from "react";
-import { SearchContext } from "@/contexts/Filters/SearchContext";
+'use client';
+import { useSearchContext } from "@/contexts/Filters/SearchContext";
 import { Saira_Stencil_One } from "next/font/google";
 import { NextFont } from "next/dist/compiled/@next/font";
 import Image from "next/image";
-import shoppingBag from '../../assets/shopping-bag.png'
-import styles from './Header.module.css'
+import shoppingBag from '../../assets/shopping-bag.png';
+import styles from './Header.module.css';
 
 const SairaStencilOne: NextFont = Saira_Stencil_One({ subsets: ["latin"], weight: ['400']});
 
 export default function Header(): JSX.Element {
-    const { toSetSearch } = useContext(SearchContext);
+    const { toSetSearch } = useSearchContext();
     return (
         <header className={styles.header}>
             <h1 className={SairaStencilOne.className}>capputeeno</h1>

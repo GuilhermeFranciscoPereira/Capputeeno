@@ -1,9 +1,7 @@
-'use client'
-import { useContext } from "react"
-import { CategoryContext } from "@/contexts/Filters/CategoryContext"
-import { useQuery } from "react-query"
-import axios from "axios"
-import { OrganizeByContext } from "@/contexts/Filters/OrganizeByContext"
+import { useCategoryContext } from "@/contexts/Filters/CategoryContext";
+import { useOrganizeByContext } from "@/contexts/Filters/OrganizeByContext";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 type productsProps = {
     data: {
@@ -22,8 +20,8 @@ type productsProps = {
 }
 
 export default function useGetDatas(): {data: productsProps | undefined; isFetching: boolean} {
-    const {category} = useContext(CategoryContext);
-    const {choice, order} = useContext(OrganizeByContext);
+    const {category} = useCategoryContext();
+    const {choice, order} = useOrganizeByContext();
     const {data, isFetching} = useQuery<productsProps>(`Products - ${category} - Field: ${choice} - Order: ${order}`, async () => {
         try {
             const response = await axios({
@@ -59,14 +57,14 @@ export default function useGetDatas(): {data: productsProps | undefined; isFetch
                     `
                 }
             })
-            return response.data
+            return response.data;
         } catch (error) {
-            console.log(`Ocorreu um erro ao fazer a requisição para o GraphQL: ${error}`)
+            console.log(`Ocorreu um erro ao fazer a requisição para o GraphQL: ${error}`);
         }
     }, {
         refetchOnWindowFocus: false, 
         refetchOnReconnect: false, 
         staleTime: 1000 * 60 * 60 * 24 // 1 day - ( 24 hour - 1440 minutes )
     })
-    return { data, isFetching }
+    return { data, isFetching };
 }

@@ -1,6 +1,7 @@
-import Link from "next/link"
+'use client';
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styles from './TogglePagination.module.css'
+import styles from './TogglePagination.module.css';
 
 type idNavLinksProps = Array<
     {
@@ -21,11 +22,11 @@ const idNavLinks: idNavLinksProps = [
 
 export default function TogglePagination(): JSX.Element {
     const pathName: string = usePathname();
-    
+
     return (
     <section className={styles.togglePagination}>
         {idNavLinks.map((idLink) => {
-            const isActive: boolean = pathName.endsWith(idLink.href)
+            const isActive: boolean = pathName.endsWith(idLink.href);
             return (
                 <Link
                     style={{

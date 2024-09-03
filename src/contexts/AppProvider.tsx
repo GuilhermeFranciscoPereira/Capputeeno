@@ -1,4 +1,5 @@
-import { CategoryProvider } from "./Filters/CategoryContext"
+'use client';
+import { CategoryProvider } from "./Filters/CategoryContext";
 import { OrganizeByProvider } from "./Filters/OrganizeByContext";
 import { SearchProvider } from "./Filters/SearchContext";
 

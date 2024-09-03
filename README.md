@@ -1,8 +1,6 @@
 # ☕ Projeto Capputeeno ☕
 
-Commit: 29/08/2024 - 18:41 ( Commit de adição da opção filtro de "Organizar por" )
-## Veja eu criando este commit no meu canal do youtube:
-> 🔗 <a href="https://youtube.com/@lottusdev?si=XXXaT6mtVrOct7Tr" target="_blank">Projeto Capputeeno - Parte 5 - Filtro de pesquisa de "organizar por"</a>
+### Commit: 02/09/2024 - 22:30 ( Refatoração em todo o código para remover os 'use client' desnecessários e adicionar o metadata no layout )
 
 ## ⚠️ IMPORTANTE!
 ### O desafio pede que a estilização seja feita com styled-components. Embora eu prefira estilizar com styled-components, usando react. Quando uso Next.js, prefiro estilizar com CSS Modules para garantir que a renderização no lado do servidor seja precisa.
@@ -16,20 +14,26 @@ Commit: 29/08/2024 - 18:41 ( Commit de adição da opção filtro de "Organizar 
 
 ### Alterações na pasta: ( src )
 
-### Alterações nas pastas de ( src ): ( assets / components / contexts / hooks )
+### Alterações nas pastas de ( src ): ( app / components / contexts / hooks / services )
 
-## assets:
-- assets: Adicionado a imagem do site atualmente, com os filtros já aplicados.
+## app:
+- app > layout.tsx: Removido o queryClientProvider e movido para (services > queryClient) para conseguir retirar o 'use client' e adicionado o metadata do site.
+- app > page.tsx: Removido a importação do 'useContext' e do contexto e então trocado por uma única importação que já faz os dois.
 
 ## components:
-- components > Nav: Adicionado uma nova função para que toda vez que o select for alterado ele chame a função que seta o novo valor para fazer a requisição com o filtro desejado.
+- components > Header: Adicionado o 'use client' e também removido a importação do 'useContext' e do contexto e então trocado por uma única importação que já faz os dois.
+- components > Nav: Removido a importação do 'useContext' e do contexto e então trocado por uma única importação que já faz os dois.
+- components > TogglePagination: Pequenas alterações sem impactos (Toda a estrutura será alterada no próximo commit).
 
 ## contexts:
-- contexts > AppProvider: Adicionado o provider de OrganizeBy.
-- contexts > Filters > OrganizeByContext.tsx: Criado todo o contexto para setar e compartilhar o valor setado, a ordem e a função que seta um novo valor.
+- contexts > AppProvider: Adicionado o 'use client' para ficar em apenas um local.
+- contexts > Filters > Todos os 3 arquios: Adicionado uma nova função que faz a exportação do contexto já com o 'use client' para não precisar utilizar o 'useContext' e o 'use client' no arquivo que fizer a importação.
 
 ## hooks:
-- hooks > useGetDatas.tsx: Apenas adicionado os parâmetros sortField e sortOrder em "allProducts" para fazer a requisição com o filtro que o usuário escolher.
+- hooks > useGetDatas.tsx: Removido o 'use client' e removido a importação do 'useContext' e do contexto para então trocar por uma única importação que já faz os dois.
+
+## services:
+- services > queryClient.tsx: Refatorado toda a estrutura para que seja possível fazer a exportação já com o queryClient, assim não é necessário usar o 'use client' no layout.tsx.
 
 ##
 

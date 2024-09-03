@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 type searchContextProps = {
     search: string;
@@ -21,4 +21,10 @@ const SearchProvider = ({children}: {children: React.ReactNode}): JSX.Element =>
     )
 }
 
-export {SearchContext, SearchProvider};
+//This function below is to use the UseContext here, and to not need use 'use client' where call this context and to use 'use client' in the AppProvider.tsx;
+function useSearchContext() {
+    const useSearchContext = useContext(SearchContext);
+    return useSearchContext;
+}
+
+export {SearchProvider, useSearchContext};

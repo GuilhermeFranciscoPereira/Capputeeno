@@ -1,12 +1,10 @@
-'use client'
-import { useContext } from 'react'
-import { CategoryContext } from '@/contexts/Filters/CategoryContext';
-import { OrganizeByContext } from '@/contexts/Filters/OrganizeByContext';
-import styles from './Nav.module.css'
+import { useCategoryContext } from '@/contexts/Filters/CategoryContext';
+import { useOrganizeByContext } from '@/contexts/Filters/OrganizeByContext';
+import styles from './Nav.module.css';
 
 export default function Nav(): JSX.Element {
-    const {toSetCategory} = useContext(CategoryContext);
-    const {toSetChoiceAndOrder} = useContext(OrganizeByContext);
+    const {toSetCategory} = useCategoryContext();
+    const {toSetChoiceAndOrder} = useOrganizeByContext();
     
     function handleSetChoiceAndOrder(event: React.ChangeEvent<HTMLSelectElement>): void {
         const splitWord: Array<string> = (event.target.value).split(' ');

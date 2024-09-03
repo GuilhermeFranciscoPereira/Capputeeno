@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type CategoryContextProps = {
     category: string;
@@ -12,7 +12,7 @@ const CategoryProvider = ({children}: {children: React.ReactNode}): JSX.Element 
 
     useEffect(() => {
         document.querySelector('#allProducts')?.classList.add('Nav_active__Z6ODH');
-    }, [])
+    }, []);
 
     function toSetCategory(category: string, activeId: string): void {
         setCategory(category);
@@ -32,4 +32,10 @@ const CategoryProvider = ({children}: {children: React.ReactNode}): JSX.Element 
     )
 }
 
-export {CategoryContext, CategoryProvider};
+//This function below is to use the UseContext here, and to not need use 'use client' where call this context and to use 'use client' in the AppProvider.tsx;
+function useCategoryContext() {
+    const useCategoryContext = useContext(CategoryContext);
+    return useCategoryContext;
+}
+
+export {CategoryProvider, useCategoryContext};

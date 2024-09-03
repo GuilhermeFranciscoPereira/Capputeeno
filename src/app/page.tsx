@@ -1,6 +1,5 @@
 'use client';
-import { useContext } from "react";
-import { SearchContext } from "@/contexts/Filters/SearchContext";
+import { useSearchContext } from "@/contexts/Filters/SearchContext";
 import useGetDatas from "@/hooks/useGetDatas";
 import Nav from "@/components/Nav";
 import Image from "next/image";
@@ -8,7 +7,7 @@ import TogglePagination from "@/components/TogglePagination";
 import "../styles/GlobalStyles.css";
 
 export default function Home(): JSX.Element {
-  const {search} = useContext(SearchContext);
+  const {search} = useSearchContext();
   const {data, isFetching} = useGetDatas();
   return (
     <>

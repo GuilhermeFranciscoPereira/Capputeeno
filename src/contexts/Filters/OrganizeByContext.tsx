@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 type OrganizeByContextProps = {
     choice: string;
@@ -24,4 +24,10 @@ const OrganizeByProvider = ({children}: {children: React.ReactNode}): JSX.Elemen
     )
 }
 
-export {OrganizeByContext, OrganizeByProvider};
+//This function below is to use the UseContext here, and to not need use 'use client' where call this context and to use 'use client' in the AppProvider.tsx;
+function useOrganizeByContext() {
+    const useOrganizeByContext = useContext(OrganizeByContext);
+    return useOrganizeByContext;
+}
+
+export {OrganizeByProvider, useOrganizeByContext};
