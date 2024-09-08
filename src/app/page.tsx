@@ -4,15 +4,17 @@ import useGetDatas from "@/hooks/useGetDatas";
 import Nav from "@/components/Nav";
 import Image from "next/image";
 import TogglePagination from "@/components/TogglePagination";
+import { useCategoryContext } from "@/contexts/Filters/CategoryContext";
 import "../styles/GlobalStyles.css";
 
 export default function Home(): JSX.Element {
   const {search} = useSearchContext();
   const {data, isFetching} = useGetDatas();
+  const {category} = useCategoryContext();
   return (
     <>
     <Nav/>
-    <TogglePagination/>
+    {category == '' ? <TogglePagination/> : ''}
     <main className='mainCards'>
       {isFetching ? <h1 className='h1Fetching'>Carregando...</h1> :
         data?.data.allProducts.map(product => (
@@ -37,7 +39,7 @@ export default function Home(): JSX.Element {
       }
     </main>
     <div className='lastPartFromHome'>
-      <TogglePagination/>      
+      {category == '' ? <TogglePagination/> : ''}
     </div>
     </>
   )

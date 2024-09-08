@@ -1,43 +1,18 @@
-'use client';
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTogglePaginationContext } from '@/contexts/Filters/TogglePaginationContext';
 import styles from './TogglePagination.module.css';
 
-type idNavLinksProps = Array<
-    {
-        name: string,
-        href: string
-    }
->
-
-const idNavLinks: idNavLinksProps = [
-    {name: '1', href: '/'},
-    {name: '2', href: '/2'},
-    {name: '3', href: '/3'},
-    {name: '4', href: '/4'},
-    {name: '5', href: '/5'},
-    {name: '<', href: '/5'},
-    {name: '>', href: '/5'}
-]
-
 export default function TogglePagination(): JSX.Element {
-    const pathName: string = usePathname();
-
+    const {toSetPage, toTogglePage} = useTogglePaginationContext();
+    
     return (
-    <section className={styles.togglePagination}>
-        {idNavLinks.map((idLink) => {
-            const isActive: boolean = pathName.endsWith(idLink.href);
-            return (
-                <Link
-                    style={{
-                        border: `${isActive ? '1px solid rgba(255, 165, 133, 1)': 'none'}`,
-                        color: `${isActive ? 'rgba(255, 165, 133, 1)' : 'rgba(115, 115, 128, 1)'}`,
-                        fontWeight: `${isActive ? '600' : '400'}`
-                    }}
-                    key={idLink.name} href={`${idLink.href}`}>{idLink.name}
-                </Link>
-            )
-        })}
-    </section>
+        <section className={styles.togglePagination}>
+            <button id='page1' className={styles.active} onClick={() => toSetPage(1)}>1</button>
+            <button id='page2' onClick={() => toSetPage(2)}>2</button>
+            <button id='page3' onClick={() => toSetPage(3)}>3</button>
+            <button id='page4' onClick={() => toSetPage(4)}>4</button>
+            <button id='page5' onClick={() => toSetPage(5)}>5</button>
+            <button onClick={() => toTogglePage('<')}>{'<'}</button>
+            <button onClick={() => toTogglePage('>')}>{'>'}</button>
+        </section>
     )
 }

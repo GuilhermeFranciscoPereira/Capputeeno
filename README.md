@@ -1,6 +1,9 @@
 # ☕ Projeto Capputeeno ☕
 
-### Commit: 02/09/2024 - 22:30 ( Refatoração em todo o código para remover os 'use client' desnecessários e adicionar o metadata no layout )
+### Commit: 08/09/2024 - 13:14 ( Adição do último filtro - Filtragem por página )
+
+## Veja eu criando este commit no meu canal do youtube:
+> <a href="https://youtu.be/7onYBK9bz-o" target="_blank">🔗 Projeto Capputeeno - Parte 6 - Filtro de páginas</a>
 
 ## ⚠️ IMPORTANTE!
 ### O desafio pede que a estilização seja feita com styled-components. Embora eu prefira estilizar com styled-components, usando react. Quando uso Next.js, prefiro estilizar com CSS Modules para garantir que a renderização no lado do servidor seja precisa.
@@ -12,28 +15,27 @@
 
 ## ✔️ Alterações deste commit:
 
-### Alterações na pasta: ( src )
+## Alterações na pasta: ( src )
 
-### Alterações nas pastas de ( src ): ( app / components / contexts / hooks / services )
+## Alterações nas pastas de ( src ): ( app / assets / components / contexts / hooks )
 
-## app:
-- app > layout.tsx: Removido o queryClientProvider e movido para (services > queryClient) para conseguir retirar o 'use client' e adicionado o metadata do site.
-- app > page.tsx: Removido a importação do 'useContext' e do contexto e então trocado por uma única importação que já faz os dois.
+### app:
+- app > page.tsx: Adicionado um pequeno filtro, que se, estiver em "camisetas" ou "canecas" a filtragem de página não aparecerá.
 
-## components:
-- components > Header: Adicionado o 'use client' e também removido a importação do 'useContext' e do contexto e então trocado por uma única importação que já faz os dois.
-- components > Nav: Removido a importação do 'useContext' e do contexto e então trocado por uma única importação que já faz os dois.
-- components > TogglePagination: Pequenas alterações sem impactos (Toda a estrutura será alterada no próximo commit).
+### assets:
+- assets: Adicionado a foto que mostra o site atual com a filtragem de páginas - (Imagem usada neste ReadMe).
 
-## contexts:
-- contexts > AppProvider: Adicionado o 'use client' para ficar em apenas um local.
-- contexts > Filters > Todos os 3 arquios: Adicionado uma nova função que faz a exportação do contexto já com o 'use client' para não precisar utilizar o 'useContext' e o 'use client' no arquivo que fizer a importação.
+### components:
+- components > Nav > index.tsx: Adicionado a estilização para já iniciar o site com a marcação em "Todos os produtos".
+- components > TogglePagination: Refatorado toda a estrutura do index.tsx para a nova versão com botões. E também alterado a estilização da tag "a" para "button".
 
-## hooks:
-- hooks > useGetDatas.tsx: Removido o 'use client' e removido a importação do 'useContext' e do contexto para então trocar por uma única importação que já faz os dois.
+### contexts:
+- contexts > AppProvider: Adicionado o provider do TogglePagination.
+- contexts > Filters > TogglePaginationContext.tsx: Criado todo o contexto para a troca de páginas.
+- contexts > Filters > CategoryContext.tsx: Removido o useEffect (Usado para começar o site já marcado o "Todos os produtos" porém, não era eficiente o suficiente e arrumei um jeito melhor em: components > Nav > index.tsx).
 
-## services:
-- services > queryClient.tsx: Refatorado toda a estrutura para que seja possível fazer a exportação já com o queryClient, assim não é necessário usar o 'use client' no layout.tsx.
+### hooks:
+- hooks > useGetDatas.tsx: Adicionado o parâmetro de "page" e "perPage" ao "AllProducts" além de alterar a chave da query para fazer a requisição ao fazer o cache.
 
 ##
 

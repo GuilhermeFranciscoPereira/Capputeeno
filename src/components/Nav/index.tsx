@@ -16,7 +16,7 @@ export default function Nav(): JSX.Element {
         <nav>
             <section className={styles.navSection}>
                 <div className={styles.divLink}>
-                    <button id='allProducts' onClick={() => toSetCategory('', 'allProducts')}>TODOS OS PRODUTOS</button>
+                    <button id='allProducts' onClick={() => toSetCategory('', 'allProducts')} className={styles.active}>TODOS OS PRODUTOS</button>
                     <button id='t-shirts' onClick={() => toSetCategory('t-shirts', 't-shirts')}>CAMISETAS</button>
                     <button id='mugs' onClick={() => toSetCategory('mugs', 'mugs')}>CANECAS</button>
                 </div>
