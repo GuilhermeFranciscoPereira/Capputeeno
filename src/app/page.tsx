@@ -1,5 +1,6 @@
 'use client';
 import { useSearchContext } from "@/contexts/Filters/SearchContext";
+import { useDynamicProductContext } from "@/contexts/Pages/DynamicProductContext";
 import useGetDatas from "@/hooks/useGetDatas";
 import Nav from "@/components/Nav";
 import Image from "next/image";
@@ -11,6 +12,7 @@ export default function Home(): JSX.Element {
   const {search} = useSearchContext();
   const {data, isFetching} = useGetDatas();
   const {category} = useCategoryContext();
+  const {handleIdAndRouter} = useDynamicProductContext();
   return (
     <>
     <Nav/>
@@ -20,7 +22,7 @@ export default function Home(): JSX.Element {
         data?.data.allProducts.map(product => (
           search.length > 1
           ? ( product.name.toLowerCase().trim().replace(/\s+/g, '').includes(search) &&
-            <div key={product.id}>
+            <div key={product.id} onClick={() => handleIdAndRouter(product.name, product.id)}>
                 <Image src={product.image_url} height={300} width={300} alt={`Imagem do produto: ${product.name}`} quality={100}/>
                 <p>{product.name}</p>
                 <hr />
@@ -28,7 +30,7 @@ export default function Home(): JSX.Element {
             </div>
           )
           : (
-            <div key={product.id}>
+            <div key={product.id} onClick={() => handleIdAndRouter(product.name, product.id)}>
                 <Image src={product.image_url} height={300} width={300} alt={`Imagem do produto: ${product.name}`} quality={100}/>
                 <p>{product.name}</p>
                 <hr />

@@ -1,41 +1,28 @@
 # ☕ Projeto Capputeeno ☕
 
-### Commit: 08/09/2024 - 13:14 ( Adição do último filtro - Filtragem por página )
-
-## Veja eu criando este commit no meu canal do youtube:
-> <a href="https://youtu.be/7onYBK9bz-o" target="_blank">🔗 Projeto Capputeeno - Parte 6 - Filtro de páginas</a>
+### Commit: 10/09/2024 - 15:23 ( Criação da página única do produto )
 
 ## ⚠️ IMPORTANTE!
 ### O desafio pede que a estilização seja feita com styled-components. Embora eu prefira estilizar com styled-components, usando react. Quando uso Next.js, prefiro estilizar com CSS Modules para garantir que a renderização no lado do servidor seja precisa.
 
 # 
 
-## 💭 Como o site está no momento atual com os filtros:
-![Imagem do projeto atualmente](./src/assets/telaFinalizadaFiltros.png)
-
 ## ✔️ Alterações deste commit:
 
 ## Alterações na pasta: ( src )
 
-## Alterações nas pastas de ( src ): ( app / assets / components / contexts / hooks )
+## Alterações nas pastas de ( src ): ( app / contexts / hooks )
 
 ### app:
-- app > page.tsx: Adicionado um pequeno filtro, que se, estiver em "camisetas" ou "canecas" a filtragem de página não aparecerá.
-
-### assets:
-- assets: Adicionado a foto que mostra o site atual com a filtragem de páginas - (Imagem usada neste ReadMe).
-
-### components:
-- components > Nav > index.tsx: Adicionado a estilização para já iniciar o site com a marcação em "Todos os produtos".
-- components > TogglePagination: Refatorado toda a estrutura do index.tsx para a nova versão com botões. E também alterado a estilização da tag "a" para "button".
+- app > page.tsx: Foi adicionado a função de tratamento do click ao card do produto, onde ao clicar muda para a página do produto e faz a requisição.
+- app > (pages) > produtos > [DynamicProduct]: Criado toda a estrutura da página de produto único e sua estilização.
 
 ### contexts:
-- contexts > AppProvider: Adicionado o provider do TogglePagination.
-- contexts > Filters > TogglePaginationContext.tsx: Criado todo o contexto para a troca de páginas.
-- contexts > Filters > CategoryContext.tsx: Removido o useEffect (Usado para começar o site já marcado o "Todos os produtos" porém, não era eficiente o suficiente e arrumei um jeito melhor em: components > Nav > index.tsx).
+- contexts > AppProvider: Adicionado o provider do DynamicProduct.
+- contexts > Pages > DynamicProduct: Criado todo o contexto para os produtos dinâmicos.
 
 ### hooks:
-- hooks > useGetDatas.tsx: Adicionado o parâmetro de "page" e "perPage" ao "AllProducts" além de alterar a chave da query para fazer a requisição ao fazer o cache.
+- hooks > useGetDynamicProduct.tsx: Criado um novo arquivo, mas este é para realizar a requisição de produtos únicos baseado no ID.
 
 ##
 
