@@ -3,6 +3,7 @@ import { CategoryProvider } from "./Filters/CategoryContext";
 import { OrganizeByProvider } from "./Filters/OrganizeByContext";
 import { SearchProvider } from "./Filters/SearchContext";
 import { TogglePaginationProvider } from "./Filters/TogglePaginationContext";
+import { CartProvider } from "./Pages/CartContext";
 import { DynamicProductProvider } from "./Pages/DynamicProductContext";
 
 const AppProvider = ({children}: {children: React.ReactNode}): JSX.Element => {
@@ -12,7 +13,9 @@ const AppProvider = ({children}: {children: React.ReactNode}): JSX.Element => {
                 <OrganizeByProvider>
                     <TogglePaginationProvider>
                         <DynamicProductProvider>
-                            {children}
+                            <CartProvider>
+                                {children}
+                            </CartProvider>
                         </DynamicProductProvider>
                     </TogglePaginationProvider>
                 </OrganizeByProvider>

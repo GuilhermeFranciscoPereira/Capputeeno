@@ -5,6 +5,7 @@ import axios from "axios";
 type DynamicProductProps = {
     data: {
         Product: {
+            id: string,
             image_url: string,
             category: string,
             name: string,
@@ -25,6 +26,7 @@ export default function useDynamicProduct(): {data: DynamicProductProps | undefi
                     query: `
                         query {
                             Product(id: "${productId}") {
+                                id
                                 image_url
                                 category
                                 name

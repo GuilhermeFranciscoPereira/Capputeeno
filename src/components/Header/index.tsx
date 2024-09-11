@@ -1,4 +1,5 @@
 'use client';
+import { useCartContext } from "@/contexts/Pages/CartContext";
 import { useSearchContext } from "@/contexts/Filters/SearchContext";
 import { Saira_Stencil_One } from "next/font/google";
 import { NextFont } from "next/dist/compiled/@next/font";
@@ -10,6 +11,7 @@ const SairaStencilOne: NextFont = Saira_Stencil_One({ subsets: ["latin"], weight
 
 export default function Header(): JSX.Element {
     const { toSetSearch } = useSearchContext();
+    const {cartValue} = useCartContext();
     return (
         <header className={styles.header}>
             <h1 className={SairaStencilOne.className}>capputeeno</h1>
@@ -26,7 +28,7 @@ export default function Header(): JSX.Element {
                         height={24}
                         alt="Imagem de uma bolsinha, localizada no canto superior do site. Serve para irmos ao carrinho"
                     />
-                    <div><span>2</span></div>
+                    <div><span>{cartValue}</span></div>
                 </div>
             </div>
         </header>

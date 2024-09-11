@@ -1,4 +1,5 @@
 'use client'
+import { useCartContext } from "@/contexts/Pages/CartContext";
 import { useDynamicProductContext } from "@/contexts/Pages/DynamicProductContext";
 import useDynamicProduct from "@/hooks/useGetDynamicProduct"
 import Image from "next/image";
@@ -6,6 +7,7 @@ import Link from "next/link";
 import styles from './DynamicProduct.module.css'
 
 export default function DynamicProduct(): JSX.Element {
+    const {toSetCart} = useCartContext();
     const {data, isFetching} = useDynamicProduct();
     const {handleIdAndRouter} = useDynamicProductContext();
     return (
@@ -30,7 +32,7 @@ export default function DynamicProduct(): JSX.Element {
                             <p>{data?.data.Product.description}</p>
                         </div>
                         <div className={styles.addToCartButton}>
-                            <button>🛒 ADICIONAR AO CARRINHO </button>
+                            <button onClick={() => toSetCart(data?.data.Product.id ? data.data.Product.id : '')}>🛒 ADICIONAR AO CARRINHO </button>
                         </div>
                     </div>
                 </div>
