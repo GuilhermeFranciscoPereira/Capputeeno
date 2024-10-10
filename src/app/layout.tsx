@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import AppProvider from "@/contexts/AppProvider";
 import '../styles/GlobalStyles.css';
 
-const saira: NextFont = Saira({ subsets: ["latin"], weight: ['400']});
+const saira: NextFont = Saira({ subsets: ["latin"], weight: ['300', '400', '500']});
 
 export const metadata: Metadata = {
   title: {
@@ -22,11 +22,11 @@ export default function RootLayout({ children }: Readonly<{children: React.React
     <AppProvider>
       <ToQueryClientProvider>
         <html lang="pt-br">
-            <body className={saira.className}>
-              <Header/>
-              {children}
-            </body>
-          </html>
+          <body className={saira.className}>
+            <Header/>
+            {children}
+          </body>
+        </html>
       </ToQueryClientProvider>
     </AppProvider>
     </>

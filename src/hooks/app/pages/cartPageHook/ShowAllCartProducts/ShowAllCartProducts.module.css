@@ -1,0 +1,171 @@
+h1.h1 {
+    width: 175px;
+    height: 36px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+    text-align: left;
+    color: #41414D;
+}
+
+div.cardProduct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 736px;
+    height: 211px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    margin-bottom: 16px;
+}
+
+div.cardProduct > img {
+    border-radius: 8px 0px 0px 8px;
+    margin-right: 31px;
+}
+
+div.cardProduct > div.cardProductContent {
+    height: 211px;
+    width: 100%;
+}
+
+div.cardProduct > div.cardProductContent > .divForTheH1AndTrash {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 16px 12px 0px;
+}
+
+div.cardProduct > div.cardProductContent > .divForTheH1AndTrash > h1 {
+    width: 95%;
+    height: 30px;
+    font-size: 1.39vw;
+    font-weight: 300;
+    line-height: 30px;
+    text-align: left;
+}
+
+div.cardProduct > div.cardProductContent > .divForTheH1AndTrash > img {
+    cursor: pointer;
+}
+
+/* Description: */
+div.cardProduct > div.cardProductContent > h2 {
+    width: 429px;
+    height: 64px;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+}
+
+div.cardProduct > div.cardProductContent > .divInput {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 16px;
+}
+
+div.cardProduct > div.cardProductContent > .divInput > input {
+    background-color: #F3F5F6;
+    width: 65px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #A8A8B3;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: #737380;
+    margin-top: 25px;
+}
+
+div.cardProduct > div.cardProductContent > .divInput > p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: right;
+    color: #09090A;
+    margin-top: 41px;
+}
+
+@media (min-width: 769px) and (max-width: 1155px) {
+    div.cardProduct > div.cardProductContent > .divForTheH1AndTrash > h1 {
+        font-size: 2.39vw;
+    }
+
+    div.cardProduct > div.cardProductContent > h2 {
+        font-size: 1.60vw;
+    }    
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    div.cardProduct {
+        width: 90vw;
+        height: 211px;
+    }
+
+    div.cardProduct > img {
+        width: 40%;
+        height: 100%;
+    }
+
+    div.cardProduct > div.cardProductContent > .divForTheH1AndTrash > h1 {
+        font-size: 3.39vw;
+    }
+
+    div.cardProduct > div.cardProductContent > h2 {
+        font-size: 2vw;
+    }    
+}
+
+@media (max-width: 480px) {
+
+    div.cardProduct {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 736px;
+        height: 211px;
+        border-radius: 8px;
+        background-color: #FFFFFF;
+        margin-bottom: 16px;
+    }
+
+    div.cardProduct {
+        width: 95vw;
+        height: fit-content;
+    }
+
+    div.cardProduct > img {
+        width: 30%;
+    }
+
+    div.cardProduct > div.cardProductContent > .divForTheH1AndTrash {
+        justify-content: left;
+    }
+
+    div.cardProduct > div.cardProductContent > .divForTheH1AndTrash > h1 {
+        width: fit-content;
+        margin-right: 10px;
+        font-size: 4vw;
+    }
+
+    div.cardProduct > div.cardProductContent > h2 {
+        font-size: 2vw;
+        width: 100%;
+    }
+
+    div.cardProduct > div.cardProductContent > .divInput {
+        justify-content: left;
+    }
+    
+    div.cardProduct > div.cardProductContent > .divInput > input {
+        height: 20px;
+        margin-right: 40px;
+    }
+
+    div.cardProduct > div.cardProductContent > .divInput > p {
+        text-align: left;
+    }
+}

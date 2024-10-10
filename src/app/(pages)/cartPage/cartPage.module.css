@@ -1,0 +1,73 @@
+div.toDoMargin {
+    margin: 30px 0px 22px 160px;
+}
+
+div.toDoMargin > a {
+    font-size: 22px;
+    text-decoration: none;
+    color: rgba(97, 116, 128, 1);
+    font-weight: 500;
+}
+
+div.toDoMargin > a:hover {
+    transition: .4s;
+    color: black;
+    text-shadow: 2px 2px 10px black;
+}
+
+main.mainCartPage {
+    padding: 0px 160px;
+    min-height: 85vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media (min-width: 769px) and (max-width: 1155px) {
+    div.toDoMargin {
+        margin: 30px 0px 22px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main.mainCartPage {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 0px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    div.toDoMargin {
+        margin: 30px 0px 22px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main.mainCartPage {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    div.toDoMargin {
+        margin: 30px 0px 22px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main.mainCartPage {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 0px;
+    }
+}

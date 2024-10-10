@@ -15,7 +15,7 @@ type DynamicProductProps = {
     }
 }
 
-export default function useDynamicProduct(): {data: DynamicProductProps | undefined; isFetching: boolean} {
+export default function useGetDynamicProduct(): {data: DynamicProductProps | undefined; isFetching: boolean} {
     const {productId} = useDynamicProductContext();
     const {data, isFetching} = useQuery<DynamicProductProps>(`Product - ${productId}`, async () => {
         try {
@@ -47,5 +47,5 @@ export default function useDynamicProduct(): {data: DynamicProductProps | undefi
         staleTime: 1000 * 60 * 60 * 24 // 1 day - ( 24 hour - 1440 minutes )
     })
 
-    return { data, isFetching};
+    return { data, isFetching };
 }

@@ -1,34 +1,36 @@
 # ☕ Projeto Capputeeno ☕
 
-### Commit: 11/09/2024 - 17:38 ( Criação da função de adicionar produtos ao carrinho )
-
-## Veja eu criando este commit no meu canal do youtube:
-> <a href="https://youtu.be/yQ5d7Hc_aTI" target="_blank">🔗 Projeto Capputeeno - Parte 7 - Adicionando produtos ao carrinho</a>
+### Commit: 09/10/2024 - 21:41 ( Criação da página de carrinho )
 
 ## ⚠️ IMPORTANTE!
 ### O desafio pede que a estilização seja feita com styled-components. Embora eu prefira estilizar com styled-components, usando react. Quando uso Next.js, prefiro estilizar com CSS Modules para garantir que a renderização no lado do servidor seja precisa.
 
 # 
 
+## 💭 Como o site está na página de carrinho:
+!['Foto do site na página de carrinho'](./src/assets/imageFromTheCartPage.png)
+
 ## ✔️ Alterações deste commit:
 
 ## Alterações na pasta: ( src )
 
-## Alterações nas pastas de ( src ): ( app / components / contexts / hooks )
+## Alterações nas pastas de ( src ): ( app / assets / contexts / hooks )
 
 ### app:
-- app > (pages) > produtos > [DynamicProduct]: Adicionado a função de adicionar ao carrinho ao clicar no botão (Função que está importada de CardContext).
+- app > (pages) > cartPage: Criado a pasta que possui a página de rota para o carrinho, mas está sem a parte lógica da página de carrinho.
 
-
-### components:
-- Header > index.tsx: Importado o contexto que mostra a quantidade de produtos no carrinho.
+### assets:
+- assets > imagesForTheSite: Criado a pasta que irá armazenar as fotos que são usadas no site.
 
 ### contexts:
-- contexts > AppProvider: Adicionado o provider do Cart.
-- contexts > Pages > CartContext.tsx: Criado todo o contexto do carrinho, onde gera a quantidade de produtos no carrinho, os produtos que estão no carrinho e também salva todos os produtos do carrinho no local storage.
+- contexts > Pages > CartContext.tsx: Adicionado novas funções que fazem parte do contexto do carrinho.
 
 ### hooks:
-- hooks > useGetDynamicProduct.tsx: Apenas adicionado o 'id' na requisição, para receber o id e salvar ele no carrinho.
+- hooks > apis > useGetCartProducts.tsx: Arquivo responsável por fazer as requisições somente para os produtos que estão no carrinho.
+- hooks > Home: Criado a pasta home para adicionar os Hooks referentes a página Home.
+- hooks > cartPageHook: Pasta para adicionar os Hooks da página do carrinho.
+- hooks > cartPageHook > OrderSummary: Pasta responsável pela parte de resumo do pedido ( se localiza na parte direita da página de carrinho ).
+- hooks > cartPageHook > ShowAllCartProducts: Pasta que armazena os cards dos produtos, que faz cada card de produto do carrinho.
 
 ##
 

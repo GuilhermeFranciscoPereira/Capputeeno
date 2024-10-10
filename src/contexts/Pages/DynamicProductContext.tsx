@@ -17,7 +17,7 @@ const DynamicProductProvider = ({children}: {children: React.ReactNode}): JSX.El
         if(name === '') {
             router.push('/');
         } else {
-            router.push(`/produtos/${name.toLowerCase().trim().replace(/\s+/g, '-')}`)
+            router.push(`/produtos/${name.toLowerCase().trim().replace(/\s+/g, '-')}`);
         }
     }
 
@@ -34,4 +34,4 @@ function useDynamicProductContext() {
     return useDynamicProductContext;
 }
 
-export {useDynamicProductContext, DynamicProductProvider}
+export {useDynamicProductContext, DynamicProductProvider};
