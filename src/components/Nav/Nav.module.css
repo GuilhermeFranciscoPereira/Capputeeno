@@ -4,7 +4,7 @@ section.navSection {
     justify-content: space-between;
     margin-top: 26px;
     width: 100vw;
-    padding: 0px 160px;
+    padding: 0vw 11.11vw;
 }
 
 section.navSection > div.divLink {

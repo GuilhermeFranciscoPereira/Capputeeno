@@ -20,7 +20,7 @@ type productsProps = {
     }
 }
 
-export default function useGetDatas(): {data: productsProps | undefined; isFetching: boolean} {
+export default function useGetAllProducts(): {data: productsProps | undefined; isFetching: boolean} {
     const {category} = useCategoryContext();
     const {choice, order} = useOrganizeByContext();
     const {page} = useTogglePaginationContext();

@@ -1,25 +1,26 @@
-'use client'
+'use client';
 import { useCartContext } from "@/contexts/Pages/CartContext";
 import { useDynamicProductContext } from "@/contexts/Pages/DynamicProductContext";
-import useDynamicProduct from "@/hooks/useGetDynamicProduct"
+import useGetDynamicProduct from "@/hooks/apis/useGetDynamicProduct";
+import LinkBack from "@/components/Buttons/LinkBack";
 import Image from "next/image";
-import Link from "next/link";
-import styles from './DynamicProduct.module.css'
+import shoppingBagWhite from '../../../../assets/imagesForTheSite/shopping-bag-white.png'
+import styles from './DynamicProduct.module.css';
 
 export default function DynamicProduct(): JSX.Element {
-    const {toSetCart} = useCartContext();
-    const {data, isFetching} = useDynamicProduct();
+    const {data, isFetching} = useGetDynamicProduct();
+    const {toAddProductInCart} = useCartContext();
     const {handleIdAndRouter} = useDynamicProductContext();
+    
     return (
         <>
         {
-        isFetching ? <h1 className='h1Fetching'>Carregando...</h1> :
+        isFetching ? <h1 className={styles.h1Fetching}>Carregando...</h1> :
         data?.data.Product !== null
         ?
-            <section className={styles.sectionDynamicProduct}>
-                <div className={styles.toDoMargin} style={{margin: "30px 0px"}}>
-                    <Link href={'/'}>⮌ Voltar</Link>
-                </div>
+        <>
+        <LinkBack></LinkBack>
+        <section className={styles.sectionDynamicProduct}>
                 <div className={styles.containerProductInformations}>
                     <Image src={`${data?.data.Product.image_url}`} height={580} width={640} alt={`Imagem do produto: ${data?.data.Product.name}`} quality={100}/>
                     <div>
@@ -32,13 +33,22 @@ export default function DynamicProduct(): JSX.Element {
                             <p>{data?.data.Product.description}</p>
                         </div>
                         <div className={styles.addToCartButton}>
-                            <button onClick={() => toSetCart(data?.data.Product.id ? data.data.Product.id : '')}>🛒 ADICIONAR AO CARRINHO </button>
+                            <button onClick={() => toAddProductInCart(data?.data.Product.id ? data.data.Product.id : '')}>
+                                <Image
+                                    src={shoppingBagWhite}
+                                    width={24}
+                                    height={24}
+                                    alt="Imagem de uma bolsinha, localizada no canto superior do site. Serve para irmos ao carrinho"
+                                />
+                                ADICIONAR AO CARRINHO 
+                            </button>
                         </div>
                     </div>
                 </div>
             </section>
+        </>
         :
-        handleIdAndRouter('', '')
+            handleIdAndRouter('', '')
         }
         </>
     )

@@ -1,47 +1,87 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 type CartContextProps = {
-    cartValue: number;
-    toSetCart: (id: string) => void;
+    quantityOfProductsInCart: number;
+    quantityProduct: {[productId: string]: number};
+    totalValueCart: number;
+    toSetTotalValueCart: (totalValue: number) => void;
+    toSetTheQuantityOfTheProduct: (productId: string, newValue: number) => void;
+    toCorrectTheQuantityOfProductsInCart: (quantity: number) => void;
+    toAddProductInCart: (id: string) => void;
+    toDeleteProductInCart: (productId: string) => void;
 }
 
 const CartContext = createContext<CartContextProps>({} as CartContextProps);
 
 const CartProvider = ({children}: {children: React.ReactNode}): JSX.Element => {
-    const [cartValue, setCartValue] = useState<number>(0);
-    const [allProductsInCart, setAllProductsInCart] = useState<Array<string>>([]);
+    const [allIdsProductsInCart, setAllIdsProductsInCart] = useState<Array<string>>([]);
+    const [quantityOfProductsInCart, setQuantityOfProductsInCart] = useState<number>(0);
+    const [quantityProduct, setQuantityProduct] = useState<{ [productId: string]: number }>({});
+    const [totalValueCart, setTotalValueCart] = useState<number>(0);
 
-    //This useEffect it is to check if exist a key 'allPr,oductsInCart' in local storage and set the value of items and set the products
+    // When the application starts, it fetches the localStorage data and passes the localStorage Ids and the quantity
     useEffect(() => {
         const localStorageProducts: string | null = localStorage.getItem('allProductsInCart');
-        if (localStorageProducts) {
-            try {
-                const localStorageJsonParse: Array<string> = JSON.parse(localStorageProducts);
-                setAllProductsInCart(localStorageJsonParse);
-                setCartValue(localStorageJsonParse.length);
-            } catch (err) {
-                console.error(`O local storage não possui nenhum item de produto. Erro: ${err}`);
-            }
-        }
+        const localStorageJsonParse: Array<string> = localStorageProducts && JSON.parse(localStorageProducts);
+        localStorageProducts && setAllIdsProductsInCart(localStorageJsonParse);
+        localStorageJsonParse.map(productId => {
+            setQuantityProduct(quantity => ({
+                ...quantity, [productId]: 1
+            }));
+        })
+        toCorrectTheQuantityOfProductsInCart(0);
     }, []);
 
-    function toSetCart(id: string): void {
-        if (id === '') {
+    // This function is called from ShowAllCartProducts to set the value of cart
+    function toSetTotalValueCart(totalValue: number): void {
+        setTotalValueCart(totalValue);
+    }
+
+    // To set the quantity from each product
+    const toSetTheQuantityOfTheProduct = (productId: string, newValue: number): void => {
+        setQuantityProduct(quantity => ({
+            ...quantity, [productId]: newValue
+        }));
+    }
+
+    // To correct the value of cart
+    function toCorrectTheQuantityOfProductsInCart(quantity: number): void {
+        setQuantityOfProductsInCart(quantity);
+    }
+
+    // To add the product in localStorage when the user click to add to cart
+    function toAddProductInCart(productId: string): void {
+        if (productId === '') {
             alert('Ocorreu um erro ao adicionar o produto no carrinho. Por favor, tente novamente!');
+        } else if(localStorage.getItem('allProductsInCart')?.includes(productId)) {
+            alert('Produto já adicionado no carrinho, se deseja mais que uma quantidade deste produto altere no carrinho!');
         } else {
-            setAllProductsInCart(products => [...products, id]);
-            setCartValue(cartValue + 1);
+            setAllIdsProductsInCart(products => [...products, productId]);
+            setQuantityOfProductsInCart(quantityOfProductsInCart + 1);
+            setQuantityProduct(quantity => ({
+                ...quantity, [productId]: 1
+            }));
         }
     }
 
+    // To delete the products from the localStorage
+    function toDeleteProductInCart(productId: string): void {
+        const localStorageProducts: string | null = localStorage.getItem('allProductsInCart');
+        const localStorageJsonParse: Array<string> = localStorageProducts && JSON.parse(localStorageProducts);
+        const updatedProducts = localStorageJsonParse.filter(product => product !== productId);
+        localStorage.setItem('allProductsInCart', JSON.stringify(updatedProducts));
+        setQuantityOfProductsInCart(updatedProducts.length);
+    }
+
+    //All times the user add a product to the cart this useEffect will set the all products to the localStorage; 
     useEffect(() => {
-        if(allProductsInCart.length > 0) {
-            localStorage.setItem('allProductsInCart', JSON.stringify(allProductsInCart));
+        if(allIdsProductsInCart.length > 0) {
+            localStorage.setItem('allProductsInCart', JSON.stringify(allIdsProductsInCart));
         }
-    }, [allProductsInCart]); 
+    }, [allIdsProductsInCart]);
 
     return (
-        <CartContext.Provider value={{cartValue, toSetCart}}>
+        <CartContext.Provider value={{quantityOfProductsInCart, quantityProduct, totalValueCart, toSetTotalValueCart, toSetTheQuantityOfTheProduct, toCorrectTheQuantityOfProductsInCart, toAddProductInCart, toDeleteProductInCart}}>
             {children}
         </CartContext.Provider>
     )
@@ -53,4 +93,4 @@ function useCartContext() {
     return useCartContext;
 }
 
-export { useCartContext, CartProvider};
+export { useCartContext, CartProvider };

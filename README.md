@@ -1,9 +1,6 @@
 # ☕ Projeto Capputeeno ☕
 
-### Commit: 11/09/2024 - 17:38 ( Criação da função de adicionar produtos ao carrinho )
-
-## Veja eu criando este commit no meu canal do youtube:
-> <a href="https://youtu.be/yQ5d7Hc_aTI" target="_blank">🔗 Projeto Capputeeno - Parte 7 - Adicionando produtos ao carrinho</a>
+### Commit: 10/10/2024 - 16:41 ( Refatoração para finalizar o projeto (Estilo e melhora no código) )
 
 ## ⚠️ IMPORTANTE!
 ### O desafio pede que a estilização seja feita com styled-components. Embora eu prefira estilizar com styled-components, usando react. Quando uso Next.js, prefiro estilizar com CSS Modules para garantir que a renderização no lado do servidor seja precisa.
@@ -14,21 +11,21 @@
 
 ## Alterações na pasta: ( src )
 
-## Alterações nas pastas de ( src ): ( app / components / contexts / hooks )
+## Alterações nas pastas de ( src ): ( app / assets / components / styles )
 
 ### app:
-- app > (pages) > produtos > [DynamicProduct]: Adicionado a função de adicionar ao carrinho ao clicar no botão (Função que está importada de CardContext).
+- app > (pages) > cartPage: Removido o botão de voltar para adicionar como um componente.
+- app > (pages) > produtos > [DynamicProduct]: Também removido o botão de voltar para adicionar como um componente e também alterado a estilização das informações na página de produto único. (Alterações como espaçamento entre palavras)
 
+### assets:
+- assets > imagesForTheSite: Adicionado a imagem correta do botão de voltar.
 
 ### components:
-- Header > index.tsx: Importado o contexto que mostra a quantidade de produtos no carrinho.
+- components > Buttons > LinkBack: Transformado o botão de voltar como um componente reutilizável.
+- components > Header: Adicionado a opção de ao clicar no nome "Capputeeno" no canto superior esquerdo volta para a página inicial.
 
-### contexts:
-- contexts > AppProvider: Adicionado o provider do Cart.
-- contexts > Pages > CartContext.tsx: Criado todo o contexto do carrinho, onde gera a quantidade de produtos no carrinho, os produtos que estão no carrinho e também salva todos os produtos do carrinho no local storage.
-
-### hooks:
-- hooks > useGetDynamicProduct.tsx: Apenas adicionado o 'id' na requisição, para receber o id e salvar ele no carrinho.
+### styles:
+- styles > GlobalStyles.css: Removido estilizações do estilo global para o estilo local.
 
 ##
 

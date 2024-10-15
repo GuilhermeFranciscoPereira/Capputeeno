@@ -1,0 +1,136 @@
+section.OrderSection {
+    width: 352px;
+    height: 700px;
+    background-color: #FFFFFF;
+    padding: 16px 24px 24px 24px;
+}
+
+section.OrderSection > h2 {
+    height: 30px;
+    font-size: 1.38vw;
+    font-weight: 600;
+    line-height: 30px;
+    color: #41414D;
+    margin-bottom: 17px;
+}
+
+section.OrderSection > div.subtotalDiv, section.OrderSection > div.deliveryDiv {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    height: 24px;
+}
+
+section.OrderSection > div.subtotalDiv > p, section.OrderSection > div.deliveryDiv > p {
+    width: fit-content;
+    font-size: 1.11vw;
+    font-weight: 400;
+    line-height: 24px;
+    color: #41414D;
+}
+
+section.OrderSection > hr {
+    margin: 24px 0px 8px 0px;
+    border: 1px solid #DCE2E5
+}
+
+section.OrderSection > div.totalDiv {
+    display: flex;
+    justify-content: space-between;
+    height: 24px;
+    margin-bottom: 40px;
+    color: #41414D;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+
+section.OrderSection > button {
+    width: 303px;
+    height: 44px;
+    border: none;
+    border-radius: 4px;
+    background-color: #51B853;
+    color: #F5F5FA;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    cursor: pointer;
+    transition: .7s;
+}
+
+section.OrderSection > button:hover {
+    transform: scale(1.05);
+}
+
+section.OrderSection > ul {
+    margin-top: 281px;
+    list-style-type: none;
+}
+
+section.OrderSection > ul > li {
+    width: fit-content;
+    font-size: 0.97vw;
+    font-weight: 500;
+    line-height: 21px;
+    color: #737380;
+    border-bottom: 1px solid #737380;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+section.OrderSection > ul > li:hover {
+    color: #41414D;
+}
+
+@media (min-width: 769px) and (max-width: 1155px) {
+    section.OrderSection > h2 {
+        font-size: 2.38vw;
+    }  
+
+    section.OrderSection > div.subtotalDiv > p, section.OrderSection > div.deliveryDiv > p {
+        font-size: 2vw;
+    }
+
+    section.OrderSection > ul > li {
+        font-size: 1.97vw;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    section.OrderSection > h2 {
+        font-size: 3vw;
+    }  
+
+    section.OrderSection > div.subtotalDiv > p, section.OrderSection > div.deliveryDiv > p {
+        font-size: 2.3vw;
+    }
+
+    section.OrderSection > ul > li {
+        font-size: 1.97vw;
+    }
+}
+
+
+@media (max-width: 480px) {
+    section.OrderSection {
+        height: fit-content;
+    }
+    
+    section.OrderSection > h2 {
+        font-size: 5vw;
+    }  
+
+    section.OrderSection > div.subtotalDiv > p, section.OrderSection > div.deliveryDiv > p {
+        font-size: 4vw;
+    }
+
+    section.OrderSection > ul {
+        margin-top: 50px;
+    }
+
+    section.OrderSection > ul > li {
+        font-size: 3.5vw;
+    }
+}
