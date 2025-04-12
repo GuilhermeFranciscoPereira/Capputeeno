@@ -4,11 +4,18 @@ import { useDynamicProductContext } from "@/contexts/Pages/DynamicProductContext
 import useGetAllProducts from "@/hooks/apis/useGetAllProducts";
 import Image from "next/image";
 import styles from './ShowAllProducts.module.css'
+import { useEffect } from "react";
 
 export default function ShowAllProducts(): JSX.Element {
   const {data, isFetching} = useGetAllProducts();
   const {search} = useSearchContext();
   const {handleIdAndRouter} = useDynamicProductContext();
+
+  useEffect(() => {
+    if(!localStorage.getItem('allProductsInCart')) {
+      localStorage.setItem('allProductsInCart', JSON.stringify([]));
+    }
+  }, [])
   
   return (
     <>
